@@ -1,0 +1,47 @@
+{
+  "name": "yia",
+  "description": "前端集成方案",
+  "version": "1.0.4",
+  "author": {
+    "name": "yia",
+    "email": "ok8008@yeah.net"
+  },
+  "homepage": "",
+  "keywords": [
+    "yia"
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "license": "MIT",
+  "bin": {
+    "yia": "bin/yia"
+  },
+  "scripts": {
+    "test": "bin/yia"
+  },
+  "main": "yia.js",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liutian1937/yia.git"
+  },
+  "dependencies": {
+    "chalk" : "1.1.0",
+    "commander":"2.8.1",
+    "htmllint": "0.2.4",
+    "html-minifier": "0.7.2",
+    "csslint": "0.10.0",
+    "clean-css": "3.3.4",
+    "jshint": "2.8.0",
+    "js-beautify": "1.5.4",
+    "uglify-js": "2.4.23",
+    "cssom":"0.3.0",
+    "spritesmith":"1.3.2",
+    "css": "2.2.1",
+    "less": "2.5.1",
+    "node-watch": "0.3.4",
+    "velocityjs": "0.6.2",
+    "art-template": "3.0.3"
+  }
+}

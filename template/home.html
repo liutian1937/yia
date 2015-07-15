@@ -1,0 +1,65 @@
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>File List</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <link rel="icon" href="//static.jdpay.com/m-wallet/v0.0.6/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="//static.jdpay.com/m-wallet/v0.0.6/img/app-icon.png">
+    <style>
+        html,body,ul{
+            margin: 0;
+            padding: 0;
+            font:12px/1.5 verdana,arial,"\5b8b\4f53";
+        }
+        h1,h2,h3{
+            font-size: 100%;
+        }
+        .layout{
+            width: 1000px;
+            margin: 0 auto;
+        }
+        h1{
+            font-size: 2em;
+        }
+        ul{
+            list-style: none;
+        }
+        ul li a{
+            display: block;
+            border-bottom: 1px solid #ddd;
+            line-height: 40px;
+            font-size: 14px;
+            text-indent: 0.5em;
+            color: #333;
+            text-decoration: none;
+        }
+        ul li a:hover{
+            background-color: #008800;
+            color: #fff;
+        }
+        footer{
+            line-height: 40px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <header>
+        <a href="/"><h1>File List</h1></a>
+    </header>
+    <section>
+        <ul>
+            {{each list}}
+            <li><a href="{{$value.link}}" target="{{$value.target}}">--{{$value.title}}</a></li>
+            {{/each}}
+        </ul>
+    </section>
+    <footer>
+        @copyright 2015
+    </footer>
+</div>
+</body>
+</html>
