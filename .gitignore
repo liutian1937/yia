@@ -1,4 +1,4 @@
 .git
 .svn
-.idea
-node_modules
+.idea/*
+node_modules/*
