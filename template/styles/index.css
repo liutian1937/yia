@@ -1,0 +1,36 @@
+#layout{
+    width: 1000px;
+    margin: 0 auto;
+}
+input{
+    height: 32px;
+}
+
+#yia-left .project-name{
+    border-bottom: 1px solid #eee;
+}
+
+.custom-restricted {
+    border: 1px solid #eee;
+    margin-top: 20px;
+}
+
+.filelist-name{
+    border-bottom: 1px solid #ddd;
+}
+.filelist-name span{
+    border: 1px solid #ddd;
+    border-bottom: 1px solid #fff;
+    padding: 6px 15px;
+    display: inline-block;
+    font-size: 16px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: -1px;
+}
+
+.yia-filelist ul li{
+    border-bottom: 1px solid #eee;
+    line-height: 30px;
+}
+

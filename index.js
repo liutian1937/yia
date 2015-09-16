@@ -4,10 +4,15 @@ var program = require('commander');
 module.exports = {
     run : function(){
         var package = require('./package.json');
+        var argv = process.argv.slice(2);
+
         program
             .version(package.version)
             .usage('[options] <file ...>');
 
+        /**
+         * 初始化
+         */
         program
             .command('init')
             .description('initialize project')
@@ -15,6 +20,9 @@ module.exports = {
                 yia.init();
             });
 
+        /**
+         * 打包
+         */
         program
             .command('build')
             .description('build project')
@@ -35,6 +43,9 @@ module.exports = {
                 yia.publish();
             });
 
+        /**
+         * todo:(js hint)
+         */
         program
             .command('format')
             .description('format html,js,css')
@@ -42,32 +53,35 @@ module.exports = {
                 yia.format();
             });
 
+        /**
+         * 合并当前文件夹图片，并生成css文件
+         */
         program
             .command('sprite')
-            .description('css sprites')
+            .description('images sprite')
             .action(function(){
                 yia.sprite();
-            });
-
-        program
-            .command('release')
-            .description('release project')
-            .action(function(){
-                yia.sprite(yia.build);
             });
 
         program
             .command('server')
             .description('server start')
             .action(function(){
-                yia.server();
+                if(argv.length > 1){
+                    yia.server(argv[1]);
+                }else{
+                    yia.server();
+                }
             });
 
         program
             .command('test')
-            .description('test project')
             .action(function(){
-                yia.test();
+                if(argv.length > 1){
+                    yia.test(argv[1]);
+                }else{
+                    yia.test();
+                }
             });
 
         program.parse(process.argv);

@@ -1,65 +1,140 @@
-<html lang="zh_CN">
+<!DOCTYPE html>
+<html lang="zh_CN" ng-app="FilePanel">
 <head>
     <meta charset="UTF-8">
     <title>File List</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
-    <link rel="icon" href="//static.jdpay.com/m-wallet/v0.0.6/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="//static.jdpay.com/m-wallet/v0.0.6/img/app-icon.png">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <style>
-        html,body,ul{
-            margin: 0;
-            padding: 0;
-            font:12px/1.5 verdana,arial,"\5b8b\4f53";
-        }
-        h1,h2,h3{
-            font-size: 100%;
-        }
-        .layout{
+        #layout{
             width: 1000px;
             margin: 0 auto;
         }
-        h1{
-            font-size: 2em;
+        input{
+            height: 32px;
         }
-        ul{
-            list-style: none;
+
+        #yia-left .project-name{
+            border-bottom: 1px solid #eee;
         }
-        ul li a{
-            display: block;
+
+        .custom-restricted {
+            border: 1px solid #eee;
+            margin-top: 20px;
+        }
+
+        .filelist-name{
             border-bottom: 1px solid #ddd;
-            line-height: 40px;
-            font-size: 14px;
-            text-indent: 0.5em;
-            color: #333;
-            text-decoration: none;
         }
-        ul li a:hover{
-            background-color: #008800;
+        .filelist-name span{
+            border: 1px solid #ddd;
+            border-bottom: 1px solid #fff;
+            padding: 6px 15px;
+            display: inline-block;
+            font-size: 16px;
+            position: relative;
+            z-index: 1;
+            margin-bottom: -1px;
+        }
+
+        .yia-filelist ul li{
+            border-bottom: 1px solid #eee;
+            line-height: 30px;
+        }
+
+        .yia-span-btn{
+            padding: 0px 7px;
+            display: inline-block;
             color: #fff;
+            border-radius: 3px;
+            line-height: 24px;
+            margin-right: 10px;
+            width: 70px;
+            text-align: center;
         }
-        footer{
-            line-height: 40px;
-            color: #666;
+
+        .yia-btn-floder{
+            background: #eadc8b;
+        }
+        .yia-btn-json{
+            background: #29D234;
+        }
+        .yia-btn-css{
+            background: #78d265;
+        }
+        .yia-btn-js{
+            background: #467ed2;
+        }
+        .yia-btn-html,.yia-btn-vm,.yia-btn-jsp{
+            background: #d22f39;
+        }
+        .yia-btn-jpg,.yia-btn-png{
+            background: #6973d2;
         }
     </style>
 </head>
 <body>
-<div class="layout">
-    <header>
-        <a href="/"><h1>File List</h1></a>
-    </header>
-    <section>
-        <ul>
-            {{each list}}
-            <li><a href="{{$value.link}}" target="{{$value.target}}">--{{$value.title}}</a></li>
-            {{/each}}
-        </ul>
-    </section>
-    <footer>
-        @copyright 2015
-    </footer>
+
+<div id="layout">
+    <div class="pure-g">
+        <!--pure left -->
+        <div class="pure-u-2-5" id="yia-left">
+
+            <div class="pure-u-1" id="yia-project">
+
+                <h1 class="project-name">项目列表</h1>
+
+                <form class="pure-form pure-g">
+                    <div class="pure-u-4-5">
+                        <input type="text" class="pure-input-1" placeholder="pure input">
+                    </div>
+                    <div class="pure-u-1-5">
+                        <a class="pure-button pure-button-primary pure-u-1" href="#">添加</a>
+                    </div>
+                </form>
+
+                <div class="pure-menu pure-menu-scrollable custom-restricted pure-u-1">
+                    <a href="#" class="pure-menu-link pure-menu-heading">Yahoo</a>
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
+                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--pure right -->
+        <div class="pure-u-3-5" id="yia-right">
+
+            <div class="pure-g">
+                <div class="pure-u-1-12"></div>
+                <div class="pure-u-11-12">
+                    <h2 class="filelist-name"><span><a href="/">文件列表</a></span></h2>
+                    <div class="pure-menu yia-filelist">
+
+                        <ul class="pure-menu-list" ng-controller="FilelistCtrl">
+                            <!--<li ng-repeat="item in list">-->
+                                <!--<li class="pure-menu-item"><a href="{{item.link}}" class="pure-menu-link" target="{{item.target}}">{{item.name}}</a></li>-->
+                            <!--</li>-->
+
+                            <% list.forEach(function(item){ %>
+                                <li class="pure-menu-item"><a href="<%= item.link %>" class="pure-menu-link" target="<%= item.target %>"><span class="yia-span-btn yia-btn-<%= item.extname %>"><%= item.extname %></span><%= item.title %></a></li>
+                            <% }); %>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 </div>
+
+
 </body>
 </html>
